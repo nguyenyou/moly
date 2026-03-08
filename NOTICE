@@ -1,0 +1,14 @@
+moly
+Copyright (c) 2026, Tu Nguyen and other contributors. All rights reserved.
+
+This project contains code derived from circe (https://github.com/circe/circe),
+licensed under the Apache License 2.0:
+
+  circe
+  Copyright (c) 2015, Ephox Pty Ltd, Mark Hibberd, Sean Parsons, Travis Brown,
+  and other contributors. All rights reserved.
+
+  Argonaut was initially developed to support products at Ephox.
+
+The Json AST, Encoder, Decoder, Codec, and related types are derived from
+circe-core. Modified files carry notices stating the changes made.
