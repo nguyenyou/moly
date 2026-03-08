@@ -16,14 +16,14 @@
                  │  inspect       │ │                  │
                  └────────┬───────┘ └────┬─────────────┘
                           │              │
-                 ┌────────▼──────────────▼────────────┐
-                 │     Encoder[A] / Decoder[A]        │
-                 │                                    │
-                 │  apply(a): Json      ← AST path    │
-                 │  writeTo(a, out)     ← stream path │
-                 │  apply(c): Result[A] ← AST path    │
-                 │  readFrom(in): A     ← stream path │
-                 └────────┬──────────────┬────────────┘
+                 ┌────────▼──────────────▼─────────────┐
+                 │     Encoder[A] / Decoder[A]         │
+                 │                                     │
+                 │  apply(a): Json      ← AST path     │
+                 │  writeTo(a, out)     ← stream path  │
+                 │  apply(c): Result[A] ← AST path     │
+                 │  readFrom(in): A     ← stream path  │
+                 └────────┬──────────────┬─────────────┘
                           │              │
                  ┌────────▼──────────────▼─────────────┐
                  │        moly (single jar)            │
