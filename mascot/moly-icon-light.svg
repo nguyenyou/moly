@@ -7,7 +7,7 @@
   </defs>
 
   <!-- 6 white petals with stroke for light bg visibility -->
-  <g transform="translate(32, 28)">
+  <g transform="translate(32, 32)">
     <ellipse cx="0" cy="-14" rx="7" ry="12" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5" transform="rotate(0)"/>
     <ellipse cx="0" cy="-14" rx="7" ry="12" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5" transform="rotate(60)"/>
     <ellipse cx="0" cy="-14" rx="7" ry="12" fill="#FFFFFF" stroke="#D0D0D0" stroke-width="0.5" transform="rotate(120)"/>
@@ -17,10 +17,6 @@
   </g>
 
   <!-- Golden center -->
-  <circle cx="32" cy="28" r="7" fill="url(#gold)"/>
-  <circle cx="32" cy="28" r="3" fill="#FFF5CC" opacity="0.7"/>
-
-  <!-- Black root - simple -->
-  <path d="M32 38 L32 54 Q31 58 28 60" stroke="#1C1C1C" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path d="M32 48 Q34 52 36 55" stroke="#1C1C1C" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="7" fill="url(#gold)"/>
+  <circle cx="32" cy="32" r="3" fill="#FFF5CC" opacity="0.7"/>
 </svg>

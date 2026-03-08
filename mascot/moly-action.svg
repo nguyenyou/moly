@@ -9,11 +9,6 @@
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="100%" stop-color="#E0E0E0"/>
     </radialGradient>
-    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE066"/>
-      <stop offset="50%" stop-color="#F5A623"/>
-      <stop offset="100%" stop-color="#D4881A"/>
-    </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -94,13 +89,6 @@
     <circle cx="342" cy="189" r="1.5" fill="#FFF" opacity="0.9"/>
     <circle cx="362" cy="189" r="1.5" fill="#FFF" opacity="0.9"/>
     <path d="M343 203 Q350 208 357 203" stroke="#2D2D2D" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-    <!-- Shield (left side, facing the JSON) -->
-    <g transform="translate(310, 210) rotate(-5)">
-      <path d="M0 -14 L14 -7 L14 7 Q14 22 0 28 Q-14 22 -14 7 L-14 -7 Z" 
-            fill="url(#shield-grad)" stroke="#D4881A" stroke-width="1.5"/>
-      <circle cx="0" cy="4" r="3" fill="#FFF" opacity="0.6"/>
-    </g>
   </g>
 
   <!-- Flow arrows right side -->
