@@ -64,11 +64,15 @@
 
   <!-- CENTER: Moly flower mascot -->
   <g filter="soft-shadow">
-    <!-- Root -->
-    <path d="M350 265 L350 340 Q348 358 342 368 Q336 375 330 378"
+    <!-- Root system -->
+    <path d="M350 265 L350 343 Q348 363 342 374 Q336 384 328 388"
           stroke="#1C1C1C" stroke-width="8" fill="none" stroke-linecap="round"/>
-    <path d="M350 310 Q356 325 362 340"
-          stroke="#1C1C1C" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M350 308 Q356 326 366 339 Q372 349 370 357"
+          stroke="#1C1C1C" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M350 293 Q342 307 338 316"
+          stroke="#1C1C1C" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M350 322 Q358 328 361 335"
+          stroke="#1C1C1C" stroke-width="3" fill="none" stroke-linecap="round"/>
 
     <!-- Petals -->
     <g transform="translate(350, 195)">
