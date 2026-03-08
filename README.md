@@ -1,4 +1,4 @@
-# moly
+# moly ![Scala3](https://img.shields.io/badge/Scala%203-%23de3423.svg?logo=scala&logoColor=white)
 
 **Don't pay for what you don't use.**
 
