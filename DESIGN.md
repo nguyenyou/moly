@@ -3,18 +3,18 @@
 ## Architecture
 
 ```
-                 ┌────────────────────────────────────┐
+                 ┌─────────────────────────────────────┐
                  │            User Code                │
                  └────────┬──────────────┬─────────────┘
                           │              │
-                 ┌────────▼───────┐ ┌────▼────────────┐
+                 ┌────────▼───────┐ ┌────▼─────────────┐
                  │   AST mode     │ │  Stream mode     │
                  │                │ │                  │
                  │  Json ← parse  │ │  bytes → A       │
                  │  Json → print  │ │  A → bytes       │
                  │  transform     │ │  (no Json alloc) │
                  │  inspect       │ │                  │
-                 └────────┬───────┘ └────┬────────────┘
+                 └────────┬───────┘ └────┬─────────────┘
                           │              │
                  ┌────────▼──────────────▼────────────┐
                  │     Encoder[A] / Decoder[A]        │
@@ -25,16 +25,16 @@
                  │  readFrom(in): A     ← stream path │
                  └────────┬──────────────┬────────────┘
                           │              │
-                 ┌────────▼──────────────▼────────────┐
-                 │        moly (single jar)           │
-                 │                                    │
+                 ┌────────▼──────────────▼─────────────┐
+                 │        moly (single jar)            │
+                 │                                     │
                  │  Json AST       JsonReader/Writer   │
                  │  HCursor        (built-in stream)   │
                  │  Printer        error types         │
                  │  Derivation     Configuration       │
-                 │                                    │
-                 │  zero dependencies                 │
-                 └────────────────────────────────────┘
+                 │                                     │
+                 │  zero dependencies                  │
+                 └─────────────────────────────────────┘
 ```
 
 ## Modules
