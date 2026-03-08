@@ -4,7 +4,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="mascot/moly-action.svg">
     <source media="(prefers-color-scheme: light)" srcset="mascot/moly-action-light.svg">
-    <img alt="moly — bytes flow through a flower mascot directly to types, skipping the JSON AST" src="mascot/moly-action.svg" width="500">
+    <img alt="moly — bytes flow through a flower mascot directly to types, skipping the JSON AST" src="mascot/moly-action.svg" width="500" height="286">
   </picture>
 </p>
 
