@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="center-glow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="60%" stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#E8961E"/>
+    </radialGradient>
+    <radialGradient id="petal-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8E8E8"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#1A1A2E" rx="20"/>
+
+  <!-- Root -->
+  <g filter="soft-shadow">
+    <path d="M200 240 L200 330 Q200 345 195 355 Q190 365 182 370" 
+          stroke="#1C1C1C" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M200 290 Q205 310 215 325 Q220 332 218 338" 
+          stroke="#1C1C1C" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M200 270 Q193 285 188 295" 
+          stroke="#1C1C1C" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Petals - 6 geometric petals arranged radially -->
+  <g filter="soft-shadow" transform="translate(200, 190)">
+    <!-- Petal 1 - top -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(0)"/>
+    <!-- Petal 2 -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(60)"/>
+    <!-- Petal 3 -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(120)"/>
+    <!-- Petal 4 -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(180)"/>
+    <!-- Petal 5 -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(240)"/>
+    <!-- Petal 6 -->
+    <ellipse cx="0" cy="-58" rx="28" ry="48" fill="url(#petal-grad)" transform="rotate(300)"/>
+  </g>
+
+  <!-- Golden center -->
+  <circle cx="200" cy="190" r="24" fill="url(#center-glow)" filter="glow"/>
+  <circle cx="200" cy="190" r="14" fill="#FFE066" opacity="0.6"/>
+  <circle cx="200" cy="190" r="6" fill="#FFF5CC" opacity="0.8"/>
+</svg>

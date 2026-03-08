@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Ultra-simplified: just petals + gold center at favicon scale -->
+  <g transform="translate(8, 7)">
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(60)"/>
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(120)"/>
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(240)"/>
+    <ellipse cx="0" cy="-3.8" rx="2" ry="3.2" fill="#FFF" transform="rotate(300)"/>
+  </g>
+  <circle cx="8" cy="7" r="2" fill="#F5A623"/>
+  <path d="M8 10.5 L8 14.5" stroke="#222" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
