@@ -2,7 +2,7 @@
 
 ## Project
 
-moly — a JSON library for Scala 3 that gives you circe's powerful AST when you need it and skips it entirely when you don't. One codec, two execution modes (AST + streaming). Built on jsoniter-scala's streaming engine.
+moly — a zero-dependency JSON library for Scala 3 that gives you circe's powerful AST when you need it and skips it entirely when you don't. One codec, two execution modes (AST + streaming). Built-in streaming engine, no external dependencies.
 
 ## Apache 2.0 Compliance (Non-Negotiable)
 
@@ -46,8 +46,9 @@ Any distribution (source or binary) must include both `LICENSE` and `NOTICE` fil
 
 ## Design Principles
 
-- **Wire compatibility with circe** — same JSON output, same decoding behavior, same error messages. If it works with circe, it must work identically with moly.
+- **Zero dependencies** — one jar, nothing else on the classpath. No cats, no jawn, no jsoniter-scala. Built-in streaming reader/writer, built-in lightweight error types. A core JSON library should be self-contained.
 - **Don't pay for what you don't use** — if user code never touches the `Json` AST, no `Json` nodes should be allocated.
+- **Wire compatibility with circe** — same JSON output, same decoding behavior, same error messages. If it works with circe, it must work identically with moly.
 - **Gradual adoption** — hand-written codecs work via AST fallback. Derived codecs get the fast streaming path. No all-or-nothing migration.
 - **One typeclass** — `Codec[A]` has both AST methods (`toJson`/`fromJson`) and streaming methods (`writeTo`/`readFrom`). No parallel typeclass hierarchies.
 

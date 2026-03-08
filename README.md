@@ -61,6 +61,23 @@ val user = modified.as[User]
 
 **You don't pay for what you don't use.** If you never touch the AST, you never allocate it. If you need the AST, it's right there — same power as circe, same API.
 
+## Zero dependencies
+
+moly has no transitive dependencies. One jar, nothing else on the classpath.
+
+circe depends on cats-core (for `Validated`, `NonEmptyList`, `Show`, `Eq`) and jawn (for parsing). These pull in a dependency tree that every downstream library inherits. moly replaces all of it:
+
+| circe needs | moly |
+|---|---|
+| cats `Validated` / `NonEmptyList` | Built-in (lightweight implementations) |
+| cats `Show` / `Eq` | Not needed (Scala 3 has `CanEqual`, `toString`) |
+| jawn (parser) | Built-in streaming reader |
+| jsoniter-scala | Built-in streaming reader/writer |
+
+The streaming JSON reader/writer is built into moly — purpose-built for our use case, not a general-purpose library. The macro-generated code (typed locals, direct constructors, hash-based field dispatch) is where most of the speed comes from; the reader/writer just needs to be fast enough to not be the bottleneck.
+
+This is a deliberate design choice. A core JSON library should be self-contained. You add moly to your build and you're done — no version conflicts, no transitive dependency surprises, no classpath bloat.
+
 ## Why not just use jsoniter-scala?
 
 jsoniter-scala is an excellent streaming JSON library. But it has a different JSON format (skips `None` fields, uses flat discriminators) and no AST for manipulation. If you want to:

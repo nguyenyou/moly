@@ -25,43 +25,52 @@
                     │  readFrom(in)       ← stream path │
                     └──────┬──────────────┬────────────┘
                            │              │
-               ┌───────────▼──┐    ┌──────▼───────────┐
-               │  moly-core   │    │ jsoniter-scala   │
-               │  (Json AST)  │    │ (JsonReader/     │
-               │              │    │  JsonWriter)     │
-               └──────────────┘    └──────────────────┘
+                    ┌──────▼──────────────▼────────────┐
+                    │          moly (single jar)       │
+                    │                                   │
+                    │  Json AST    JsonReader/JsonWriter │
+                    │  HCursor     (built-in streaming)  │
+                    │  Printer     error types           │
+                    │                                   │
+                    │  zero dependencies                │
+                    └──────────────────────────────────┘
 ```
 
 ## Modules
 
 ```
 moly/
-├── core/           # Json AST, Encoder, Decoder, Codec, HCursor, DecodingFailure
-│                   # Derived from circe-core. The foundation.
-│
-├── parser/         # parse: String → Json (AST mode)
-│                   # decode: String → A  (streaming fast path)
-│                   # Uses jsoniter-scala as the underlying engine for both.
-│
-├── derivation/     # Macro-derived codecs. A single `derives Codec` generates:
-│                   #   - AST methods (toJson/fromJson) — circe-compatible
-│                   #   - Stream methods (writeTo/readFrom) — direct, no AST
-│                   # Uses Scala 3 macros + Mirror + Expr.summonIgnoring
-│                   # (same technique as circe-sanely-auto)
-│
-├── printer/        # Json → String. For when you have a Json AST and need text.
-│                   # Backed by jsoniter-scala's JsonWriter for speed.
+├── core/           # Everything. Single module, zero dependencies.
+│                   #   Json AST, HCursor, DecodingFailure (derived from circe-core)
+│                   #   Encoder, Decoder, Codec (with streaming methods)
+│                   #   JsonReader, JsonWriter (built-in streaming engine)
+│                   #   Parser (String → Json or String → A)
+│                   #   Printer (Json → String)
+│                   #   Macro derivation (generates both AST + streaming code)
+│                   #   Configuration (snake_case, defaults, discriminator)
+│                   #   KeyEncoder, KeyDecoder (map keys)
 │
 ├── optics/         # Optional. Lenses/prisms for Json traversal/modification.
 │                   # Only needed when working with the AST directly.
+│                   # Only external dep: none (self-contained optics).
 │
 ├── tapir/          # Tapir integration. Provides tapir Codec[String, A, Json]
 │                   # using the streaming path. Lives here until moly matures
 │                   # enough to be contributed upstream to tapir.
+│                   # Only external dep: tapir-core (provided).
 │
 └── testing/        # Test utilities: Arbitrary[Json], roundtrip property tests,
                     # cross-codec tests (encode with moly, decode with circe).
+                    # Only external dep: test frameworks (test scope).
 ```
+
+### Why a single core module?
+
+circe splits into circe-core, circe-parser, circe-jawn, circe-generic, circe-derivation — five artifacts just to parse a case class. Each brings its own transitive deps.
+
+moly puts everything in one module: AST, parser, printer, streaming engine, derivation. One dependency in your build file, nothing else on the classpath. The streaming `JsonReader`/`JsonWriter` are built in — purpose-built for moly's use case, not a general-purpose library.
+
+This is possible because we control the whole stack. circe delegates parsing to jawn and derivation to a separate module because they're maintained by different people with different release cycles. moly is one project — everything moves together.
 
 ## Core typeclasses
 
@@ -211,11 +220,14 @@ Derived from circe-core under Apache 2.0 (with attribution, see NOTICE):
 
 - `writeTo` / `readFrom` streaming methods on Encoder/Decoder
 - Macro derivation that generates both AST and streaming code
-- jsoniter-scala backend for parser and printer
+- Built-in streaming `JsonReader` / `JsonWriter` (zero external deps)
+- Built-in parser and printer backed by the streaming engine
+- Lightweight `Validated` / `NonEmptyList` (replaces cats dependency)
 - Tapir integration module
 
 **What we don't take:**
 
 - circe-generic (replaced by our own derivation)
-- circe-jawn (replaced by jsoniter-scala backend)
+- circe-jawn (replaced by built-in streaming reader)
 - circe-literal (Scala 2 string interpolation macros)
+- cats dependency (replaced by lightweight built-in types)
