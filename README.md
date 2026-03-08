@@ -1,7 +1,11 @@
 # moly
 
 <p align="center">
-  <img src="mascot/moly-character.svg" alt="moly mascot" width="200">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="mascot/moly-character.svg">
+    <source media="(prefers-color-scheme: light)" srcset="mascot/moly-character-light.svg">
+    <img alt="moly mascot" src="mascot/moly-character.svg" width="200">
+  </picture>
 </p>
 
 ![Scala3](https://img.shields.io/badge/Scala%203-%23de3423.svg?logo=scala&logoColor=white)
