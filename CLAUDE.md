@@ -4,9 +4,9 @@
 
 moly — a zero-dependency JSON library for Scala 3 that gives you circe's powerful AST when you need it and skips it entirely when you don't. One codec, two execution modes (AST + streaming). Built-in streaming engine, no external dependencies.
 
-## Apache 2.0 Compliance (Non-Negotiable)
+## License Compliance (Non-Negotiable)
 
-moly derives code from circe, which is licensed under Apache 2.0. These rules MUST be followed at all times. Violating them is a license violation.
+moly derives code from two projects. These rules MUST be followed at all times. Violating them is a license violation.
 
 ### 1. File headers on derived code
 
@@ -21,12 +21,23 @@ Every file that contains code copied or derived from circe MUST have this header
 // - <describe what was changed>
 ```
 
-Files written from scratch (not derived from circe) do NOT need this header.
+Every file that contains code copied or derived from jsoniter-scala MUST have this header:
+
+```scala
+// This file is derived from jsoniter-scala (https://github.com/plokhotnyuk/jsoniter-scala)
+// Copyright (c) 2017, Andriy Plokhotnyuk and respective contributors.
+// Licensed under MIT.
+//
+// Modifications by moly contributors:
+// - <describe what was changed>
+```
+
+Files derived from both should include both headers. Files written from scratch need neither.
 
 ### 2. LICENSE and NOTICE files
 
 - `LICENSE` — the full Apache 2.0 license text. Must be included in every distribution. Never modify or remove.
-- `NOTICE` — attribution to both moly contributors and circe's original authors. Never remove circe's attribution. May add new moly contributors.
+- `NOTICE` — attribution to both moly contributors and upstream authors (circe and jsoniter-scala). Never remove upstream attribution. May add new moly contributors.
 
 ### 3. No circe trademarks
 

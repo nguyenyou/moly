@@ -107,7 +107,7 @@ We love circe. We don't want to replace it — we want to fill a gap.
 
 moly aims to be **wire-compatible** with circe: same JSON output, same decoding behavior, same error messages. If your application works with circe, switching to moly should produce identical results. The encoding format doesn't change; only the execution path does.
 
-We reuse circe's `Json` AST because it's well-designed and battle-tested, and we reuse jsoniter-scala's streaming internals because they're the fastest on the JVM. Both are Apache 2.0 licensed, and we gratefully acknowledge the work of Travis Brown and the circe contributors, as well as Andriy Plokhotnyuk and the jsoniter-scala contributors.
+We reuse circe's `Json` AST (Apache 2.0) because it's well-designed and battle-tested, and we reuse jsoniter-scala's streaming internals (MIT) because they're the fastest on the JVM. We gratefully acknowledge the work of Travis Brown and the circe contributors, as well as Andriy Plokhotnyuk and the jsoniter-scala contributors.
 
 ## A wish
 
