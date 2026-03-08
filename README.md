@@ -109,6 +109,10 @@ Until then, moly exists to prove the idea works and to serve codebases that need
 
 Early development. Not yet published.
 
+## Built with Claude Code
+
+This project is coded 100% by [Claude Code](https://claude.com/claude-code) using the Opus 4.6 model. The design decisions and direction are human-driven; the implementation is AI-generated.
+
 ## License
 
 Apache 2.0 — same as circe.
