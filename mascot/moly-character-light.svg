@@ -9,15 +9,7 @@
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="100%" stop-color="#E0E0E0"/>
     </radialGradient>
-    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE066"/>
-      <stop offset="50%" stop-color="#F5A623"/>
-      <stop offset="100%" stop-color="#D4881A"/>
-    </linearGradient>
-    <linearGradient id="shield-inner" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFF5CC"/>
-      <stop offset="100%" stop-color="#FFD700"/>
-    </linearGradient>
+
     <filter id="glow">
       <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
@@ -71,20 +63,4 @@
           stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
   </g>
 
-  <!-- Shield held by left petal-hand -->
-  <g transform="translate(128, 228) rotate(-10)">
-    <!-- Shield shape -->
-    <path d="M0 -18 L18 -10 L18 10 Q18 28 0 36 Q-18 28 -18 10 L-18 -10 Z"
-          fill="url(#shield-grad)" stroke="#D4881A" stroke-width="2"/>
-    <!-- Shield inner detail -->
-    <path d="M0 -10 L10 -5 L10 6 Q10 18 0 24 Q-10 18 -10 6 L-10 -5 Z"
-          fill="url(#shield-inner)" opacity="0.6"/>
-    <!-- Shield emblem - small star/spark -->
-    <path d="M0 2 L3 -4 L0 -2 L-3 -4 Z" fill="#FFF" opacity="0.8"/>
-    <path d="M0 2 L3 8 L0 6 L-3 8 Z" fill="#FFF" opacity="0.8"/>
-    <circle cx="0" cy="2" r="2.5" fill="#FFF" opacity="0.7"/>
-  </g>
-
-  <!-- Petal-arm connection to shield -->
-  <path d="M145 240 Q138 235 132 230" stroke="#D0D0D0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
 </svg>

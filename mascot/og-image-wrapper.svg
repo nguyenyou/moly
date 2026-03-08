@@ -13,11 +13,6 @@
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="100%" stop-color="#E0E0E0"/>
     </radialGradient>
-    <linearGradient id="og-shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE066"/>
-      <stop offset="50%" stop-color="#F5A623"/>
-      <stop offset="100%" stop-color="#D4881A"/>
-    </linearGradient>
     <filter id="og-glow">
       <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
@@ -73,11 +68,15 @@
 
     <!-- CENTER: Moly flower mascot -->
     <g filter="og-soft-shadow">
-      <!-- Root -->
-      <path d="M350 265 L350 340 Q348 358 342 368 Q336 375 330 378"
+      <!-- Root system (matching character style) -->
+      <path d="M350 259 L350 347 Q348 367 342 379 Q336 389 328 393"
             stroke="#3E3E58" stroke-width="8" fill="none" stroke-linecap="round"/>
-      <path d="M350 310 Q356 325 362 340"
-            stroke="#3E3E58" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M350 307 Q356 327 366 343 Q372 353 370 361"
+            stroke="#3E3E58" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M350 291 Q342 305 337 315"
+            stroke="#3E3E58" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M350 323 Q358 329 361 336"
+            stroke="#3E3E58" stroke-width="3" fill="none" stroke-linecap="round"/>
 
       <!-- Petals -->
       <g transform="translate(350, 195)">
@@ -98,13 +97,6 @@
       <circle cx="342" cy="189" r="1.5" fill="#FFF" opacity="0.9"/>
       <circle cx="362" cy="189" r="1.5" fill="#FFF" opacity="0.9"/>
       <path d="M343 203 Q350 208 357 203" stroke="#2D2D2D" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-      <!-- Shield -->
-      <g transform="translate(310, 210) rotate(-5)">
-        <path d="M0 -14 L14 -7 L14 7 Q14 22 0 28 Q-14 22 -14 7 L-14 -7 Z"
-              fill="url(#og-shield-grad)" stroke="#D4881A" stroke-width="1.5"/>
-        <circle cx="0" cy="4" r="3" fill="#FFF" opacity="0.6"/>
-      </g>
     </g>
 
     <!-- Flow arrows right side -->
