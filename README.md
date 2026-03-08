@@ -12,7 +12,7 @@
 
 **Don't pay for what you don't use.**
 
-moly is a JSON library for Scala 3 that gives you circe's powerful AST when you need it — and skips it entirely when you don't.
+moly is a JSON library for Scala 3 — what you'd get if **circe** and **jsoniter-scala** had a child. circe's powerful AST and API when you need them, jsoniter-scala's streaming speed when you don't.
 
 ## The name
 
@@ -84,20 +84,22 @@ circe depends on cats-core (for `Validated`, `NonEmptyList`, `Show`, `Eq`) and j
 | jawn (parser) | Built-in streaming reader |
 | jsoniter-scala | Built-in streaming reader/writer |
 
-The streaming JSON reader/writer is built into moly — purpose-built for our use case, not a general-purpose library. The macro-generated code (typed locals, direct constructors, hash-based field dispatch) is where most of the speed comes from; the reader/writer just needs to be fast enough to not be the bottleneck.
+moly's streaming `JsonReader` and `JsonWriter` are heavily derived from [jsoniter-scala](https://github.com/plokhotnyuk/jsoniter-scala) — one of the fastest JSON libraries on the JVM. We studied and adapted its battle-tested techniques: direct byte-level parsing, stack-based tokenization, and efficient number/string handling. The macro-generated codec layer (typed locals, direct constructors, hash-based field dispatch) draws from jsoniter-scala's approach as well. We gratefully acknowledge the work of Andriy Plokhotnyuk and the jsoniter-scala contributors.
 
 This is a deliberate design choice. A core JSON library should be self-contained. You add moly to your build and you're done — no version conflicts, no transitive dependency surprises, no classpath bloat.
 
-## Why not just use jsoniter-scala?
+## Why not just use jsoniter-scala directly?
 
-jsoniter-scala is an excellent streaming JSON library. But it has a different JSON format (skips `None` fields, uses flat discriminators) and no AST for manipulation. If you want to:
+jsoniter-scala is brilliant — and moly wouldn't exist without it. We copied and adapted large portions of its streaming internals because they're simply the best in the JVM ecosystem.
+
+But jsoniter-scala has a different JSON format (skips `None` fields, uses flat discriminators) and no AST for manipulation. If you want to:
 
 - Inspect or transform JSON before decoding
 - Use optics to navigate deep structures
 - Maintain wire compatibility with circe-based services
 - Gradually migrate a circe codebase without changing JSON format
 
-...you need both the AST *and* the fast path. That's moly.
+...you need both the AST *and* the fast path. moly gives you jsoniter-scala's streaming engine with circe's AST and wire format — the best of both worlds.
 
 ## circe compatibility
 
@@ -105,7 +107,7 @@ We love circe. We don't want to replace it — we want to fill a gap.
 
 moly aims to be **wire-compatible** with circe: same JSON output, same decoding behavior, same error messages. If your application works with circe, switching to moly should produce identical results. The encoding format doesn't change; only the execution path does.
 
-We reuse circe's `Json` AST because it's well-designed and battle-tested. The Apache 2.0 license makes this possible, and we gratefully acknowledge the work of Travis Brown and the circe contributors.
+We reuse circe's `Json` AST because it's well-designed and battle-tested, and we reuse jsoniter-scala's streaming internals because they're the fastest on the JVM. Both are Apache 2.0 licensed, and we gratefully acknowledge the work of Travis Brown and the circe contributors, as well as Andriy Plokhotnyuk and the jsoniter-scala contributors.
 
 ## A wish
 
