@@ -12,3 +12,13 @@ licensed under the Apache License 2.0:
 
 The Json AST, Encoder, Decoder, Codec, and related types are derived from
 circe-core. Modified files carry notices stating the changes made.
+
+This project also contains code derived from jsoniter-scala
+(https://github.com/plokhotnyuk/jsoniter-scala), licensed under the MIT License:
+
+  jsoniter-scala
+  Copyright (c) 2017, Andriy Plokhotnyuk and respective contributors.
+  All rights reserved.
+
+The streaming JsonReader, JsonWriter, and macro-generated codec techniques are
+derived from jsoniter-scala. Modified files carry notices stating the changes made.
