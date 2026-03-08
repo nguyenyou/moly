@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moly — Mascot Specimen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+  :root {
+    --gold: #FFD700;
+    --gold-dim: #B8860B;
+    --dark-surface: #0C0C18;
+    --dark-card: #151528;
+    --dark-border: #1E1E36;
+    --light-surface: #F5F3EE;
+    --light-card: #FFFFFF;
+    --light-border: #E0DDD6;
+    --text-primary: #E8E4DC;
+    --text-secondary: #6B6760;
+    --text-label: #888580;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--dark-surface);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── Header ─── */
+  .hero {
+    position: relative;
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 50% 40%, rgba(255, 215, 0, 0.04) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.015) 79px, rgba(255,255,255,0.015) 80px);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(56px, 10vw, 96px);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--text-primary);
+    opacity: 0.4;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .hero-mascot {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero-mascot img {
+    height: 260px;
+    width: auto;
+    filter:
+      drop-shadow(0 0 8px rgba(255, 225, 150, 0.2))
+      drop-shadow(0 20px 60px rgba(255, 215, 0, 0.12));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ─── Section ─── */
+  .section {
+    padding: 64px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--dark-border);
+    padding-bottom: 16px;
+  }
+
+  .section-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    color: var(--gold);
+    opacity: 0.35;
+    line-height: 1;
+    min-width: 36px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-label);
+    font-weight: 500;
+  }
+
+  .section-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-left: auto;
+    font-weight: 300;
+  }
+
+  /* ─── Dual Panel (dark/light side by side) ─── */
+  .dual-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    border: 1px solid var(--dark-border);
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    position: relative;
+    min-height: 340px;
+  }
+
+  .panel.dark {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 55%, rgba(255, 215, 0, 0.06) 0%, transparent 70%),
+      var(--dark-card);
+  }
+
+  .panel.light {
+    background: var(--light-surface);
+  }
+
+  .panel img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .panel.dark img {
+    filter: drop-shadow(0 0 6px rgba(255, 225, 150, 0.18)) drop-shadow(0 2px 12px rgba(255, 215, 0, 0.1));
+  }
+
+  .panel:hover img {
+    transform: scale(1.03);
+  }
+
+  .panel-label {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .panel.dark .panel-label { color: rgba(255,255,255,0.2); }
+  .panel.light .panel-label { color: rgba(0,0,0,0.2); }
+
+  .panel-filename {
+    position: absolute;
+    bottom: 16px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+  }
+
+  .panel.dark .panel-filename { color: rgba(255,255,255,0.15); }
+  .panel.light .panel-filename { color: rgba(0,0,0,0.18); }
+
+  /* ─── Variant Label ─── */
+  .variant-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .variant-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    color: var(--text-primary);
+  }
+
+  .variant-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    background: rgba(255, 215, 0, 0.06);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+  }
+
+  .variant-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ─── Action (full-width) ─── */
+  .action-panel {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--dark-border);
+    margin-bottom: 32px;
+  }
+
+  .action-panel .panel {
+    min-height: 280px;
+    padding: 40px 24px;
+  }
+
+  .action-panel img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ─── Scale Strip ─── */
+  .scale-strip {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 48px;
+    padding: 48px 32px;
+    background:
+      radial-gradient(ellipse 50% 60% at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 70%),
+      var(--dark-card);
+    border-radius: 16px;
+    border: 1px solid var(--dark-border);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .scale-item img {
+    image-rendering: auto;
+  }
+
+  .scale-meta {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .scale-meta span {
+    display: block;
+    color: var(--gold-dim);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    width: 1px;
+    height: 64px;
+    background: linear-gradient(to bottom, transparent, var(--dark-border), transparent);
+    margin: 0 auto;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    text-align: center;
+    padding: 48px 40px 64px;
+    border-top: 1px solid var(--dark-border);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .footer-file {
+    font-size: 10px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 6px;
+    border: 1px solid var(--dark-border);
+    transition: border-color 0.2s;
+  }
+
+  .footer-file:hover {
+    border-color: rgba(255, 215, 0, 0.15);
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .dual-panel { grid-template-columns: 1fr; }
+    .section { padding: 40px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .scale-strip { gap: 24px; }
+    .section-header { flex-wrap: wrap; }
+    .section-desc { margin-left: 0; margin-top: 8px; flex-basis: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════ HERO ════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Mascot Specimen</div>
+  <h1>moly</h1>
+  <p class="hero-sub">
+    white petals &middot; gold center &middot; black root &middot; quiet guardian<br>
+    9 variants across dark, light, and scale contexts
+  </p>
+  <div class="hero-mascot">
+    <img src="moly-character.svg" alt="Moly character mascot">
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ 01 — CHARACTER ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">01</div>
+    <div class="section-title">Character</div>
+    <div class="section-desc">Face + shield, the guardian</div>
+  </div>
+
+  <div class="variant-label">
+    <div class="variant-name">The Guardian</div>
+    <div class="variant-tag">400 &times; 480</div>
+  </div>
+  <p class="variant-desc">
+    Full character with expressive eyes, confident smile, and a shield held
+    by the left petal. Primary identity for docs, social, and branding.
+  </p>
+
+  <div class="dual-panel">
+    <div class="panel dark">
+      <div class="panel-label">Dark</div>
+      <img src="moly-character.svg" alt="Character (dark)" style="max-height: 320px; width: auto;">
+      <div class="panel-filename">moly-character.svg</div>
+    </div>
+    <div class="panel light">
+      <div class="panel-label">Light</div>
+      <img src="moly-character-light.svg" alt="Character (light)" style="max-height: 320px; width: auto;">
+      <div class="panel-filename">moly-character-light.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ 02 — SIMPLE ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">02</div>
+    <div class="section-title">Simple</div>
+    <div class="section-desc">Abstract geometric, no face</div>
+  </div>
+
+  <div class="variant-label">
+    <div class="variant-name">The Bloom</div>
+    <div class="variant-tag">400 &times; 400</div>
+  </div>
+  <p class="variant-desc">
+    Faceless, abstract form. Six symmetric petals, golden center, branching
+    root. Works where the character's personality would distract.
+  </p>
+
+  <div class="dual-panel">
+    <div class="panel dark">
+      <div class="panel-label">Dark</div>
+      <img src="moly-simple.svg" alt="Simple (dark)" style="max-height: 280px; width: auto;">
+      <div class="panel-filename">moly-simple.svg</div>
+    </div>
+    <div class="panel light">
+      <div class="panel-label">Light</div>
+      <img src="moly-simple-light.svg" alt="Simple (light)" style="max-height: 280px; width: auto;">
+      <div class="panel-filename">moly-simple-light.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ 03 — ACTION ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">03</div>
+    <div class="section-title">Action</div>
+    <div class="section-desc">Bytes &rarr; moly &rarr; types</div>
+  </div>
+
+  <div class="variant-label">
+    <div class="variant-name">The Pipeline</div>
+    <div class="variant-tag">700 &times; 400</div>
+  </div>
+  <p class="variant-desc">
+    Narrative scene showing moly in action: raw bytes stream in from the left,
+    the JSON AST fades behind the guardian, and typed Scala case classes emerge
+    on the right. Used in the README header.
+  </p>
+
+  <div class="action-panel">
+    <div class="panel dark">
+      <div class="panel-label">Dark</div>
+      <img src="moly-action.svg" alt="Action (dark)">
+      <div class="panel-filename">moly-action.svg</div>
+    </div>
+  </div>
+
+  <div class="action-panel">
+    <div class="panel light">
+      <div class="panel-label">Light</div>
+      <img src="moly-action-light.svg" alt="Action (light)">
+      <div class="panel-filename">moly-action-light.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ 04 — ICON ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">04</div>
+    <div class="section-title">Icon</div>
+    <div class="section-desc">Extreme minimal, scales from favicon to avatar</div>
+  </div>
+
+  <div class="variant-label">
+    <div class="variant-name">The Mark</div>
+    <div class="variant-tag">64 &times; 64</div>
+  </div>
+  <p class="variant-desc">
+    Reduced to essence: petals, center, root. No face, no shield.
+    Designed to remain legible at very small sizes.
+  </p>
+
+  <div class="dual-panel">
+    <div class="panel dark">
+      <div class="panel-label">Dark</div>
+      <img src="moly-icon.svg" alt="Icon (dark)" style="max-height: 140px; width: auto;">
+      <div class="panel-filename">moly-icon.svg</div>
+    </div>
+    <div class="panel light">
+      <div class="panel-label">Light</div>
+      <img src="moly-icon-light.svg" alt="Icon (light)" style="max-height: 140px; width: auto;">
+      <div class="panel-filename">moly-icon-light.svg</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ 05 — SCALE ═══════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">05</div>
+    <div class="section-title">Scale</div>
+    <div class="section-desc">Icon at target render sizes</div>
+  </div>
+
+  <div class="scale-strip">
+    <div class="scale-item">
+      <img src="moly-icon.svg" alt="128px" width="128" height="128">
+      <div class="scale-meta">
+        128px
+        <span>Avatar</span>
+      </div>
+    </div>
+    <div class="scale-item">
+      <img src="moly-icon.svg" alt="64px" width="64" height="64">
+      <div class="scale-meta">
+        64px
+        <span>Native</span>
+      </div>
+    </div>
+    <div class="scale-item">
+      <img src="moly-icon.svg" alt="32px" width="32" height="32">
+      <div class="scale-meta">
+        32px
+        <span>Tab icon</span>
+      </div>
+    </div>
+    <div class="scale-item">
+      <img src="moly-favicon.svg" alt="16px" width="16" height="16">
+      <div class="scale-meta">
+        16px
+        <span>Favicon</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant-label" style="margin-top: 32px;">
+    <div class="variant-name">Favicon</div>
+    <div class="variant-tag">16 &times; 16</div>
+  </div>
+  <p class="variant-desc">
+    Ultra-simplified: just petals, gold dot, and a single root stroke.
+    Separate SVG optimized for the smallest render target.
+  </p>
+
+  <div class="dual-panel">
+    <div class="panel dark" style="min-height: 200px;">
+      <div class="panel-label">Dark</div>
+      <img src="moly-favicon.svg" alt="Favicon" style="width: 64px; height: 64px; image-rendering: auto;">
+      <div class="panel-filename">moly-favicon.svg &mdash; shown at 4&times;</div>
+    </div>
+    <div class="panel light" style="min-height: 200px;">
+      <div class="panel-label">Light</div>
+      <img src="moly-favicon.svg" alt="Favicon" style="width: 64px; height: 64px; image-rendering: auto;">
+      <div class="panel-filename">moly-favicon.svg &mdash; shown at 4&times;</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-grid">
+    <div class="footer-file">moly-character.svg</div>
+    <div class="footer-file">moly-character-light.svg</div>
+    <div class="footer-file">moly-simple.svg</div>
+    <div class="footer-file">moly-simple-light.svg</div>
+    <div class="footer-file">moly-action.svg</div>
+    <div class="footer-file">moly-action-light.svg</div>
+    <div class="footer-file">moly-icon.svg</div>
+    <div class="footer-file">moly-icon-light.svg</div>
+    <div class="footer-file">moly-favicon.svg</div>
+  </div>
+  <p class="footer-note">9 files &middot; zero dependencies &middot; pure SVG</p>
+</div>
+
+</body>
+</html>

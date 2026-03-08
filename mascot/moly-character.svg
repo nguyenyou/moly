@@ -31,19 +31,19 @@
   </defs>
 
   <!-- Background -->
-  <rect width="400" height="480" fill="#1A1A2E" rx="20"/>
+  <rect width="400" height="480" fill="#252542" rx="20"/>
 
   <!-- Root system -->
   <g>
     <path d="M200 290 L200 400 Q198 425 190 440 Q182 452 172 458" 
-          stroke="#1C1C1C" stroke-width="10" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="10" fill="none" stroke-linecap="round"/>
     <path d="M200 350 Q208 375 220 395 Q228 408 226 418" 
-          stroke="#1C1C1C" stroke-width="7" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="7" fill="none" stroke-linecap="round"/>
     <path d="M200 330 Q190 348 184 360" 
-          stroke="#1C1C1C" stroke-width="5" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="5" fill="none" stroke-linecap="round"/>
     <!-- Small root detail -->
     <path d="M200 370 Q210 378 214 386" 
-          stroke="#1C1C1C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="4" fill="none" stroke-linecap="round"/>
   </g>
 
   <!-- Petals -->
