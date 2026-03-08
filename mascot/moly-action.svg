@@ -31,9 +31,6 @@
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="700" height="400" fill="#1A1A2E" rx="16"/>
-
   <!-- LEFT SIDE: Byte stream -->
   <g opacity="0.9">
     <text class="code-text" x="40" y="120" fill="#6EE7B7" font-size="13" opacity="0.5">0x48 0x65 0x6C</text>
