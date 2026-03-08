@@ -22,16 +22,16 @@
   </defs>
 
   <!-- Background -->
-  <rect width="400" height="400" fill="#1A1A2E" rx="20"/>
+  <rect width="400" height="400" fill="#252542" rx="20"/>
 
   <!-- Root -->
   <g filter="soft-shadow">
     <path d="M200 240 L200 330 Q200 345 195 355 Q190 365 182 370" 
-          stroke="#1C1C1C" stroke-width="8" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="8" fill="none" stroke-linecap="round"/>
     <path d="M200 290 Q205 310 215 325 Q220 332 218 338" 
-          stroke="#1C1C1C" stroke-width="5" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="5" fill="none" stroke-linecap="round"/>
     <path d="M200 270 Q193 285 188 295" 
-          stroke="#1C1C1C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          stroke="#3E3E58" stroke-width="4" fill="none" stroke-linecap="round"/>
   </g>
 
   <!-- Petals - 6 geometric petals arranged radially -->
