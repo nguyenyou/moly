@@ -20,13 +20,25 @@
     <filter id="soft-shadow">
       <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.2"/>
     </filter>
+    <filter id="root-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.96
+                0 0 0 0 0.85
+                0 0 0 0 0.45
+                0 0 0 0.3 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
   <!-- Background -->
   <rect width="400" height="480" fill="#252542" rx="20"/>
 
   <!-- Root system -->
-  <g>
+  <g filter="url(#root-glow)">
     <path d="M200 290 L200 400 Q198 425 190 440 Q182 452 172 458" 
           stroke="#3E3E58" stroke-width="10" fill="none" stroke-linecap="round"/>
     <path d="M200 350 Q208 375 220 395 Q228 408 226 418" 
