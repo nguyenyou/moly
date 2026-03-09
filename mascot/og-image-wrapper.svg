@@ -23,6 +23,18 @@
     <filter id="og-soft-shadow">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
     </filter>
+    <filter id="og-root-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.96
+                0 0 0 0 0.85
+                0 0 0 0 0.45
+                0 0 0 0.3 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <style>
       .code-text { font-family: 'Courier New', monospace; }
       .json-text { font-family: 'Courier New', monospace; }
@@ -67,8 +79,8 @@
     </g>
 
     <!-- CENTER: Moly flower mascot -->
-    <g filter="og-soft-shadow">
-      <!-- Root system (matching character style) -->
+    <!-- Root system (matching character style) -->
+    <g filter="url(#og-root-glow)">
       <path d="M350 259 L350 347 Q348 367 342 379 Q336 389 328 393"
             stroke="#3E3E58" stroke-width="8" fill="none" stroke-linecap="round"/>
       <path d="M350 307 Q356 327 366 343 Q372 353 370 361"
@@ -77,7 +89,9 @@
             stroke="#3E3E58" stroke-width="4" fill="none" stroke-linecap="round"/>
       <path d="M350 323 Q358 329 361 336"
             stroke="#3E3E58" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
 
+    <g filter="og-soft-shadow">
       <!-- Petals -->
       <g transform="translate(350, 195)">
         <ellipse cx="0" cy="-52" rx="25" ry="42" fill="url(#og-petal-grad)" transform="rotate(0)"/>
