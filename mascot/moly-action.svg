@@ -19,6 +19,18 @@
     <filter id="soft-shadow">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
     </filter>
+    <filter id="root-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.96
+                0 0 0 0 0.85
+                0 0 0 0 0.45
+                0 0 0 0.3 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <!-- Font style -->
     <style>
       .code-text { font-family: 'Courier New', monospace; }
@@ -63,8 +75,8 @@
   </g>
 
   <!-- CENTER: Moly flower mascot -->
-  <g filter="soft-shadow">
-    <!-- Root system -->
+  <!-- Root system -->
+  <g filter="url(#root-glow)">
     <path d="M350 265 L350 343 Q348 363 342 374 Q336 384 328 388"
           stroke="#3E3E58" stroke-width="8" fill="none" stroke-linecap="round"/>
     <path d="M350 308 Q356 326 366 339 Q372 349 370 357"
@@ -73,7 +85,9 @@
           stroke="#3E3E58" stroke-width="4" fill="none" stroke-linecap="round"/>
     <path d="M350 322 Q358 328 361 335"
           stroke="#3E3E58" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
 
+  <g filter="soft-shadow">
     <!-- Petals -->
     <g transform="translate(350, 195)">
       <ellipse cx="0" cy="-52" rx="25" ry="42" fill="url(#petal-grad)" transform="rotate(0)"/>
